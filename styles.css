@@ -5,7 +5,7 @@
 }
 
 .coin-container {
-  margin-top: 10px;
+  margin-top: 90px;
   display: flex;
   flex-direction: row-reverse;
   justify-content: center;
@@ -22,8 +22,17 @@
 
 .counter {
   font-size: 90px;
-  margin-top: -20px;
+  margin-top:-20 px;
+  margin-right:-10px;
 }
+
+.plus {
+  margin-left:100px;
+  margin-bottom:-20px;
+  font-size:18px;
+}
+
+
 
 .btn {
   background: #121331;
