@@ -72,9 +72,9 @@ document.querySelector('.Luck').addEventListener('click', function () {
 
         if (heads < 10) {
             score = score + 1;
-        } else {
             console.log(score);
-      // console.log(highscore);
+        } else {
+          console.log(score);
       htArray = [];
       headsCounter = 0;
       tailsCounter = 0;
