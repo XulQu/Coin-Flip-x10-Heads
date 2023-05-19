@@ -4,19 +4,18 @@ let htArray = [];
 let headsCounter = 0;
 let tailsCounter = 0;
 
-
 // Ask if a component needs to be in the loop
 
 const updateCounter = (counter) => {
-    setTimeout(() => {
-        document.querySelector('.counter').textContent = `${counter}`;
-    }, counter * 0.15); // Adjust the delay time as needed
+  setTimeout(() => {
+    document.querySelector('.counter').textContent = counter;
+  }, counter * 0.15); // Adjust the delay time as needed
 };
 
 const updateHighscore = (prop) => {
-    setTimeout(() => {
-        document.querySelector('#highscore').textContent = prop;
-    }, prop * 0.18); // Adjust the delay time as needed
+  setTimeout(() => {
+    document.querySelector('#highscore').textContent = prop;
+  }, prop * 0.18); // Adjust the delay time as needed
 };
 
 const updateHeadsCounter = (data) => {
@@ -31,21 +30,25 @@ const updateTailsCounter = (data) => {
   }, data * 0.18);
 };
 
+// const countFunc = (props) => {
+//   return updateCounter(props);
+// };
+
 document.querySelector('.Luck').addEventListener('click', function () {
-  let total = 0;
-    let heads = 0;
-    tails = 0;
-    let score = 1;
+  // let total = 0;
+  let heads = 0;
+  tails = 0;
+  let score = 1;
 
-    for (i = 0; i < score; i++) {
-        const randomFlip = Math.trunc(Math.random() * 2);
+  for (i = 0; i < score; i++) {
+    const randomFlip = Math.trunc(Math.random() * 2);
 
-        const flipFunc = () => {
-            if (randomFlip === 1) {
+    const flipFunc = () => {
+      if (randomFlip === 1) {
         return 'Heads';
-            } else {
+      } else {
         return 'Tails';
-            }
+      }
     };
 
     console.log(flipFunc());
@@ -54,55 +57,53 @@ document.querySelector('.Luck').addEventListener('click', function () {
       headsCounter++;
     } else if (flipFunc() === 'Tails') {
       tailsCounter++;
-        }
+    }
 
     updateHeadsCounter(headsCounter);
     updateTailsCounter(tailsCounter);
 
     // console.log(headsCounter + tailsCounter);
 
-        if (flipFunc() === 'Heads') {
-            heads = heads + 1;
+    if (flipFunc() === 'Heads') {
+      heads = heads + 1;
       tails = 0;
-        } else {
-            heads = 0;
-            tails = tails + 1;
-        }
+    } else {
+      heads = 0;
+      tails = tails + 1;
+    }
 
-
-        if (heads < 10) {
-            score = score + 1;
-            console.log(score);
-        } else {
-          console.log(score);
+    if (heads < 10) {
+      score = score + 1;
+      console.log(score);
+    } else {
+      console.log(score);
       htArray = [];
       headsCounter = 0;
       tailsCounter = 0;
-            console.log(`x10 Heads in a row, on ${score - 10} attempts`);
-        }
-    updateCounter((i + 1) - 10);
+      console.log(`x10 Heads in a row, on ${score - 10} attempts`);
+    }
+
+    updateCounter(i + 1 - 10);
 
     if (highscore === 0 && heads === 10) {
-            highscore = i;
+      highscore = i;
       updateHighscore(score - 10);
-      total = (score - 10);
+      // return (total = score - 10);
     } else if (score < highscore && heads === 10) {
-            highscore = score;
+      highscore = score;
       updateHighscore(highscore - 10);
-      total = (score - 10)
-      
-        }
-        
-        console.log(total);
-
-        if(total === 0){
-          updateHighscore(1);
-          updateCounter(1);
-        } else {
-          updateHighscore(`Error for 1st attempt`)
-        }
-    
+      // return (total = score - 10);
     }
+
+    if (highscore === 9) {
+      updateHighscore(1);
+      updateCounter(1);
+    }
+
+    // if (addedCounter === 0) {
+    //   return console.log('Deez Nutz');
+    // }
+  }
 });
 
 const audio = new Audio('collectcoin-6075.mp3');
